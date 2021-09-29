@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "restaurants",
+  "info": {
+    "name": "Restaurant",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "menus": {
+      "via": "restaurant",
+      "collection": "menu"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "country": {
+      "type": "enumeration",
+      "enum": [
+        "de",
+        "ca"
+      ]
+    }
+  }
+}
